@@ -1,0 +1,23 @@
+public class solution {
+
+    public static int convertStringToInt(String input) {
+        // Call the helper function with the starting index set to the last character
+        return stringToIntegerHelper(input, input.length() - 1);
+    }
+
+    private static int stringToIntegerHelper(String s, int index) {
+        // Base case: if the index is less than 0, return 0
+        if (index < 0) {
+            return 0;
+        }
+        
+        // Convert the character at the current index to an integer
+        int digit = s.charAt(index) - '0';
+        
+        // Recursively calculate the integer value
+        int result = stringToIntegerHelper(s, index - 1);
+        
+        // Combine the current digit with the result obtained from the rest of the string
+        return result * 10 + digit;
+    }
+}
